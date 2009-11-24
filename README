@@ -1,0 +1,19 @@
+ErrorPagesGenerator
+===================
+
+Generates static 404.html and 500.html error pages using your layouts.
+
+Alternatives
+===========
+
+http://blog.ubrio.us/code/rails-22-custom-error-pages-with-exception-loggable/
+http://m.onkey.org/2008/7/20/rescue-from-dispatching
+
+Example
+=======
+
+rake generate_error_pages
+
+
+Copyright (c) 2009 Constantin Gavrilescu and the others mentioned, released under the MIT license.
+
