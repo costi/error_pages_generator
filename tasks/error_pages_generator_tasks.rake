@@ -2,13 +2,20 @@
 # 
 desc "Creates error pages"
 task :generate_error_pages => :environment do
-  ERROR_PAGES = ['404', '500']
-  class ErrorPagesController < ApplicationController
-    def show
-      render ERROR_PAGES.find(lambda{raise StandardError::ArgumentError,'Need a known error code'}) do |error_code|
+  class ErrorPage
+    ERROR_PAGES = ['404', '500']
+    def find(page)
+      ERROR_PAGES.find(lambda{raise StandardError::ArgumentError,'Need a known error code'}) do |error_code|
                            error_code == params[:error_code] 
                          end
     end
+  end
+
+  class ErrorPagesController < ApplicationController
+    def show
+      render ErrorPage.find(params[:error_code]
+    end
+
   end
   require 'action_controller/integration'
   ActionController::Routing::Routes.add_route 'error_page/:error_code', 
